@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1tvpjknj4t6t"]
+
+[ext_resource type="Script" path="res://Scenes/meteor.gd" id="1_nkl1m"]
+[ext_resource type="Texture2D" uid="uid://fmgxo5vmaav2" path="res://PNG/Meteors/meteorBrown_big1.png" id="1_pospe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0lv1"]
+radius = 44.0454
+
+[node name="Meteor" type="RigidBody2D" groups=["meteors"]]
+gravity_scale = 0.0
+script = ExtResource("1_nkl1m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pospe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h0lv1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
